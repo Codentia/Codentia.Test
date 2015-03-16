@@ -1,0 +1,9 @@
+﻿<root defaultassembly="Codentia.Test.Test.dll">
+	<InsertTestParent class="Codentia.Test.Test.TestClass" usetransaction="true">
+    <params returnvar="" database="[~Database~]" myParentInt="1" myParentGuid="[~RandomGuid~]">
+      <myParentString>
+        <![CDATA[<test>fred</test>]]>
+      </myParentString>
+    </params>
+	</InsertTestParent>
+</root>

@@ -1,0 +1,6 @@
+﻿<cleardowntables>  
+  <cleardowntable nodelete="Y">TestDataNotParent</cleardowntable>
+  <cleardowntable nodelete="y">TestDataNotChild</cleardowntable>
+  <cleardowntable>TestDataNotChild2</cleardowntable>  
+</cleardowntables>
+  

@@ -1,0 +1,454 @@
+
+
+CREATE TABLE TestTable1
+(
+	TestTable1Id	INT IDENTITY(1,1),
+	TestInt			INT NOT NULL DEFAULT 1,
+	TestString		NVARCHAR(10) NOT NULL DEFAULT 'ABCDEFGH',
+	TestDateTime	DATETIME NOT NULL DEFAULT GETDATE(),
+	TestDecimal		DECIMAL(20,10) NOT NULL,
+	TestBit			BIT NOT NULL,
+	TestGuid		UNIQUEIDENTIFIER NOT NULL DEFAULT NEWID()
+)
+GO
+
+INSERT INTO dbo.TestTable1
+(
+	TestInt,
+	TestString,
+	TestDateTime,
+	TestDecimal,
+	TestBit
+)
+VALUES
+(
+	3,
+	'ABCDEFGHIJ',
+	'2007-06-01',
+	17.5,
+	1
+)
+GO
+
+CREATE TABLE TestTable2
+(
+	TestTable2Id	INT IDENTITY(1,1),
+	TestInt			INT NOT NULL DEFAULT 1,
+	TestString		NVARCHAR(10) NOT NULL DEFAULT 'ABCDEFGH',
+	TestDateTime	DATETIME NOT NULL DEFAULT GETDATE()
+)
+GO
+
+CREATE TABLE TestTable3
+(
+	TestTable3Id	INT IDENTITY(1,1),
+	TestInt			INT NOT NULL DEFAULT 1,
+	TestString		NVARCHAR(10) NOT NULL DEFAULT 'ABCDEFGH',
+	TestDateTime	DATETIME NOT NULL DEFAULT GETDATE()
+)
+GO
+
+CREATE TABLE TestTable4
+(
+	TestTable4Id	INT IDENTITY(1,1),
+	TestInt			INT NOT NULL DEFAULT 1,
+	TestString		NVARCHAR(10) NOT NULL DEFAULT 'ABCDEFGH',
+	TestDateTime	DATETIME NOT NULL DEFAULT GETDATE()
+)
+GO
+
+CREATE TABLE TestTable5
+(
+	TestTable5Id	INT IDENTITY(1,1),
+	TestTable4Id	INT NOT NULL,
+	TestInt			INT NOT NULL DEFAULT 1,
+	TestString		NVARCHAR(10) NOT NULL DEFAULT 'ABCDEFGH',
+	TestDateTime	DATETIME NOT NULL DEFAULT GETDATE()
+)
+GO
+
+CREATE TABLE TestTable6
+(
+	TestTable5Id	INT IDENTITY(1,1),
+	TestInt			INT NOT NULL DEFAULT 1,
+	TestGuid		UNIQUEIDENTIFIER DEFAULT NEWID()	
+)
+GO
+
+CREATE TABLE TestTable_Underscore
+(
+	TestTableUnderscoreId	INT IDENTITY(1,1),
+	TestInt					INT NOT NULL DEFAULT 1,
+	TestString				NVARCHAR(10) NOT NULL DEFAULT 'ABCDEFGH',
+	TestDateTime			DATETIME NOT NULL DEFAULT GETDATE()
+)
+GO
+
+CREATE TABLE TestTableNoIdent
+(
+	TestTableNoIdentId			INT NOT NULL DEFAULT 1,
+	TestString					NVARCHAR(10) NOT NULL DEFAULT 'ABCDEFGH',
+	TestDateTime				DATETIME NOT NULL DEFAULT GETDATE(),
+	TestDecimal					DECIMAL(20,10) NOT NULL,
+	TestBit						BIT NOT NULL,
+	TestGuid					UNIQUEIDENTIFIER NOT NULL DEFAULT NEWID()
+)
+GO
+
+CREATE TABLE Test_TableDifferent
+(
+	TableDifferentId	INT IDENTITY(1,1),
+	TestInt				INT NOT NULL DEFAULT 1,
+	TestString			NVARCHAR(10) NOT NULL DEFAULT 'ABCDEFGH',
+	TestDateTime		DATETIME NOT NULL DEFAULT GETDATE(),
+	ExtraIntColumn		INT
+)
+GO
+
+CREATE TABLE Test_TableDifferentNoStringCompare
+(
+	TestTableDifferentNoStringCompareId 	INT IDENTITY(1,1),
+	TestInt									INT NOT NULL DEFAULT 1,
+	TestString								NVARCHAR(10) NOT NULL DEFAULT 'ABCDEFGH',
+	TestDateTime							DATETIME NOT NULL DEFAULT GETDATE()
+)
+GO
+
+CREATE TABLE Test_TableSameNoStringCompare
+(
+	TestTableSameNoStringCompareId	INT IDENTITY(1,1),
+	TestInt							INT NOT NULL DEFAULT 1,
+	TestString						NVARCHAR(10) NOT NULL DEFAULT 'ABCDEFGH',
+	TestDateTime					DATETIME NOT NULL DEFAULT GETDATE()
+)
+GO
+
+INSERT INTO dbo.TestTable3
+(
+	TestInt,
+	TestString,
+	TestDateTime
+)
+VALUES
+(
+	3,
+	'ABCDEFGHIJ',
+	'2007-06-01'
+)
+GO
+
+INSERT INTO dbo.TestTable3
+(
+	TestInt,
+	TestString,
+	TestDateTime
+)
+VALUES
+(
+	6,
+	'JIHGFEDCBA',
+	'2007-06-02'
+)
+GO
+
+INSERT INTO dbo.TestTable4
+(
+	TestInt,
+	TestString,
+	TestDateTime
+)
+VALUES
+(
+	199999999,
+	'BLAHBLER',
+	'2015-07-01'
+)
+GO
+
+INSERT INTO dbo.TestTable4
+(
+	TestInt,
+	TestString,
+	TestDateTime
+)
+VALUES
+(
+	2000,
+	'BLERGGGHH',
+	'2005-07-01'
+)
+GO
+
+INSERT INTO dbo.TestTable5
+(
+	TestTable4Id,
+	TestInt,
+	TestString,
+	TestDateTime
+)
+VALUES
+(
+	1,
+	199999999,
+	'BLAHBLER',
+	'2015-07-01'
+)
+GO
+
+INSERT INTO dbo.TestTable6
+(
+	TestInt
+)
+SELECT 1
+UNION ALL
+SELECT 2
+UNION ALL
+SELECT 3
+
+GO
+	
+
+INSERT INTO dbo.TestTable_Underscore
+(
+	TestInt,
+	TestString,
+	TestDateTime
+)
+VALUES
+(
+	199999999,
+	'BLAHBLER',
+	'2015-07-01'
+)
+GO
+
+INSERT INTO dbo.TestTable_Underscore
+(
+	TestInt,
+	TestString,
+	TestDateTime
+)
+VALUES
+(
+	199999999,
+	'BLAHBLER',
+	'2015-07-01'
+)
+GO
+
+
+
+
+INSERT INTO dbo.Test_TableDifferent
+(
+	TestInt,
+	TestString,
+	TestDateTime
+)
+VALUES
+(
+	2000,
+	'BLERGGGHH',
+	'2005-07-01'
+)
+GO
+
+
+INSERT INTO dbo.Test_TableDifferentNoStringCompare
+(
+	TestInt,
+	TestString,
+	TestDateTime
+)
+VALUES
+(
+	2000,
+	'BLERGGGHH',
+	'2005-07-01'
+)
+GO
+
+INSERT INTO dbo.Test_TableSameNoStringCompare
+(
+	TestInt,
+	TestString,
+	TestDateTime
+)
+VALUES
+(
+	2000,
+	'BLERGGGHH',
+	'2005-07-01'
+)
+GO
+
+CREATE TABLE TestTableNotInTargetDB
+(
+	TestTable1Id	INT IDENTITY(1,1),
+	TestInt			INT NOT NULL DEFAULT 1,
+	TestString		NVARCHAR(10) NOT NULL DEFAULT 'ABCDEFGH',
+	TestDateTime	DATETIME NOT NULL DEFAULT GETDATE(),
+	TestDecimal		DECIMAL(20,10) NOT NULL,
+	TestBit			BIT NOT NULL,
+	TestGuid		UNIQUEIDENTIFIER NOT NULL DEFAULT NEWID()
+)
+GO
+
+CREATE TABLE TestTableEmpty
+(
+	TestTableEmptyId	INT IDENTITY(1,1),
+	TestInt				INT NOT NULL DEFAULT 1,
+	TestString			NVARCHAR(10) NOT NULL DEFAULT 'ABCDEFGH',
+	TestDateTime		DATETIME NOT NULL DEFAULT GETDATE(),
+	TestDecimal			DECIMAL(20,10) NOT NULL,
+	TestBit				BIT NOT NULL,
+	TestGuid			UNIQUEIDENTIFIER NOT NULL DEFAULT NEWID()
+)
+GO
+
+CREATE TABLE TestTableEmpty2
+(
+	TestTableEmpty2Id	INT IDENTITY(1,1),
+	TestInt				INT NOT NULL DEFAULT 1,
+	TestString			NVARCHAR(10) NOT NULL DEFAULT 'ABCDEFGH',
+	TestDateTime		DATETIME NOT NULL DEFAULT GETDATE(),
+	TestDecimal			DECIMAL(20,10) NOT NULL,
+	TestBit				BIT NOT NULL,
+	TestGuid			UNIQUEIDENTIFIER NOT NULL DEFAULT NEWID()
+)
+GO
+
+CREATE TABLE TestTableEmpty3
+(
+	TestTableEmpty3Id	INT IDENTITY(1,1),
+	TestInt				INT NOT NULL DEFAULT 1,
+	TestString			NVARCHAR(10) NOT NULL DEFAULT 'ABCDEFGH',
+	TestDateTime		DATETIME NOT NULL DEFAULT GETDATE(),
+	TestDecimal			DECIMAL(20,10) NOT NULL,
+	TestBit				BIT NOT NULL,
+	TestGuid			UNIQUEIDENTIFIER NOT NULL DEFAULT NEWID()
+)
+GO
+
+CREATE TABLE TestTableCombo
+(
+	TestTableComboId	INT IDENTITY(1,1),
+	TestInt				INT NOT NULL DEFAULT 1	
+)
+GO
+
+INSERT INTO TestTableCombo(TestInt)
+VALUES (100)
+INSERT INTO TestTableCombo(TestInt)
+VALUES (200)
+
+
+CREATE TABLE TestTableCombo2
+(
+	TestTableCombo2Id	INT IDENTITY(1,1),
+	TestInt				INT NOT NULL DEFAULT 1	
+)
+GO
+
+INSERT INTO TestTableCombo2(TestInt)
+VALUES (150)
+INSERT INTO TestTableCombo2(TestInt)
+VALUES (250)
+
+CREATE TABLE TestTableCombo3
+(
+	TestTableCombo3Id	INT IDENTITY(1,1),
+	TestTableComboId    INT NOT NULL,
+	TestTableCombo2Id   INT NOT NULL
+	
+)
+GO
+
+INSERT INTO TestTableCombo3(TestTableComboId, TestTableCombo2Id)
+VALUES (1,1)
+
+CREATE TABLE TestTableActive
+(
+	TestTableActiveId	INT IDENTITY(1,1),
+	TestInt				INT NOT NULL DEFAULT 1,
+	IsActive			BIT
+)
+
+GO
+
+INSERT INTO TestTableActive(TestInt, IsActive)
+SELECT 1, 1
+UNION 
+SELECT 2, 1
+UNION 
+SELECT 3, 0
+UNION 
+SELECT 4, 0
+
+GO
+
+CREATE TABLE TestTableDelete
+(
+	TestTableActiveId	INT IDENTITY(1,1),
+	TestInt				INT NOT NULL DEFAULT 1	
+)
+
+GO
+
+CREATE PROCEDURE dbo.TestProc1
+AS
+	BEGIN
+		SET NOCOUNT ON
+	END
+GO
+
+CREATE PROCEDURE dbo.TestProc2
+	@param1		INT
+AS
+	BEGIN
+		SET NOCOUNT ON
+	END
+GO
+
+CREATE PROCEDURE dbo.TestProc3
+	@param1		INT OUTPUT
+AS
+	BEGIN
+		SET NOCOUNT ON
+
+		SET @param1 = 2
+	END
+GO
+
+CREATE PROCEDURE dbo.TestProc4
+AS
+	BEGIN
+		SET NOCOUNT ON
+
+		SELECT 1, 2, 3, 4
+	END
+GO
+
+CREATE PROCEDURE dbo.TestProc5
+	@param1		INT
+AS
+	BEGIN
+		SET NOCOUNT ON
+
+		SELECT @param1, 2, 3, 4
+	END
+GO
+
+CREATE PROCEDURE dbo.TestProc6
+	@param1		INT OUTPUT
+AS
+	BEGIN
+		SET NOCOUNT ON
+
+		SET @param1 = 2
+
+		SELECT @param1, 2, 3, 4
+	END
+GO
+
+

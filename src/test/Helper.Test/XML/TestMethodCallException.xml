@@ -1,0 +1,19 @@
+<root defaultassembly="Codentia.Test.Test.dll">
+	<GenerateRandomPhoneNumber assembly="Codentia.Test.dll"  class="Codentia.Test.Generator.DataGenerator"/>
+	<GenerateRandomPhoneNumber assembly="Codentia.Test.dll"  class="Codentia.Test.Generator.DataGenerator">
+		<params returnvar=""/>
+	</GenerateRandomPhoneNumber>
+	<InsertTestParent class="Codentia.Test.Test.TestClass" usetransaction="true">
+		<params returnvar="" database="[~Database~]" myParentString="ParentRow1" myParentInt="1" myParentGuid="[~RandomGuid~]"/>
+		<childmethods>
+			<InsertTestChild class="Codentia.Test.Test.TestClass" signature="System.Guid,System.String,System.Int32,System.String,System.Int32,System.Guid">
+				<params returnvar="" database="[~Database~]" testParentId="[~ParentId~]" myChildString="ChildRow1" myChildInt="100" myChildGuid="[~RandomGuid~]"/>
+				<params returnvar="" database="[~Database~]" testParentId="[~ParentId~]" myChildString="ChildRow2" myChildInt="200" myChildGuid="[~RandomGuid~]"/>
+			</InsertTestChild>
+			<InsertTestChild class="Codentia.Test.Test.TestClass" signature="System.Guid,System.String,System.Int32,System.String,System.Int32">
+				<params returnvar="" database="[~Database~]" testParentId="[~ParentId~]" myChildString="ChildRow3" myChildInt="300"/>
+				<params returnvar="" database="[~Database~]" testParentId="100000" myChildString="ChildRow4" myChildInt="400"/>
+			</InsertTestChild>
+		</childmethods>
+	</InsertTestParent>
+</root>
