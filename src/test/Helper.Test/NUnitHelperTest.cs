@@ -143,7 +143,7 @@ namespace Codentia.Test.Test.Helper.Test
         public void _013_IsCandidateForClearDown_True_NoSystemTable()
         {
             string scriptPath = @"Helper.Test\SQL\SetupTestDB.sql";
-            DBSetupHelper.EnsureTestDatabaseExists("master", "test1", "MITTest1", scriptPath, true);  
+            DBSetupHelper.EnsureTestDatabaseExists("master", "test1", "CETest1", scriptPath, true);  
             Assert.That(NUnitHelper.IsCandidateForClearDown("test1", "my.blah.dll"), Is.True);
         }
 
@@ -155,7 +155,7 @@ namespace Codentia.Test.Test.Helper.Test
         public void _014_IsCandidateForClearDown_True_SystemTable_DifferentGuid()
         {
             string scriptPath = @"Helper.Test\SQL\SetupTestDB.sql";
-            DBSetupHelper.EnsureTestDatabaseExists("master", "test1", "MITTest1", scriptPath, true);
+            DBSetupHelper.EnsureTestDatabaseExists("master", "test1", "CETest1", scriptPath, true);
 
             Guid g1 = Guid.NewGuid();
             Guid g2 = Guid.NewGuid();
@@ -174,7 +174,7 @@ namespace Codentia.Test.Test.Helper.Test
         public void _015_IsCandidateForClearDown_True_SystemTable_SameGuid_PassedThreshold()
         {
             string scriptPath = @"Helper.Test\SQL\SetupTestDB.sql";
-            DBSetupHelper.EnsureTestDatabaseExists("master", "test1", "MITTest1", scriptPath, true);
+            DBSetupHelper.EnsureTestDatabaseExists("master", "test1", "CETest1", scriptPath, true);
 
             Guid g1 = Guid.NewGuid();            
 
@@ -194,7 +194,7 @@ namespace Codentia.Test.Test.Helper.Test
         public void _016_IsCandidateForClearDown_True_SystemTable_SameGuid_UnderThreshold()
         {
             string scriptPath = @"Helper.Test\SQL\SetupTestDB.sql";
-            DBSetupHelper.EnsureTestDatabaseExists("master", "test1", "MITTest1", scriptPath, true);
+            DBSetupHelper.EnsureTestDatabaseExists("master", "test1", "CETest1", scriptPath, true);
 
             Guid g1 = Guid.NewGuid();
 
@@ -212,7 +212,7 @@ namespace Codentia.Test.Test.Helper.Test
         public void _017_UnitTestDataChecker_True_FullCleardown()
         {
             string scriptPath = @"Helper.Test\SQL\SetUpTestDBWithDataAndNoFK.sql";
-            DBSetupHelper.EnsureTestDatabaseExists("master", "test1", "MITTest1", scriptPath, true);           
+            DBSetupHelper.EnsureTestDatabaseExists("master", "test1", "CETest1", scriptPath, true);           
     
             Assert.That(SqlHelper.GetRowCountFromTable("test1", "TestDataNotParent"), Is.EqualTo(1));
             Assert.That(SqlHelper.GetRowCountFromTable("test1", "TestDataNotChild"), Is.EqualTo(1));
@@ -233,7 +233,7 @@ namespace Codentia.Test.Test.Helper.Test
         public void _018_UnitTestDataChecker_True_PartialCleardown()
         {
             string scriptPath = @"Helper.Test\SQL\SetUpTestDBWithDataAndNoFK.sql";
-            DBSetupHelper.EnsureTestDatabaseExists("master", "test1", "MITTest1", scriptPath, true);
+            DBSetupHelper.EnsureTestDatabaseExists("master", "test1", "CETest1", scriptPath, true);
 
             Assert.That(SqlHelper.GetRowCountFromTable("test1", "TestDataNotParent"), Is.EqualTo(1));
             Assert.That(SqlHelper.GetRowCountFromTable("test1", "TestDataNotChild"), Is.EqualTo(1));
@@ -254,7 +254,7 @@ namespace Codentia.Test.Test.Helper.Test
         public void _019_UnitTestDataChecker_False()
         {
             string scriptPath = @"Helper.Test\SQL\SetUpTestDBWithDataAndNoFK.sql";
-            DBSetupHelper.EnsureTestDatabaseExists("master", "test1", "MITTest1", scriptPath, true);            
+            DBSetupHelper.EnsureTestDatabaseExists("master", "test1", "CETest1", scriptPath, true);            
 
             Assert.That(SqlHelper.GetRowCountFromTable("test1", "TestDataNotParent"), Is.EqualTo(1));
             Assert.That(SqlHelper.GetRowCountFromTable("test1", "TestDataNotChild"), Is.EqualTo(1));

@@ -16,7 +16,7 @@ namespace Codentia.Test.DataLoader.Test
         public void _001_TestFixtureSetUp()
         {
             string scriptPath = @"Helper.Test\SQL\SetupTestDB3.sql";
-            DBSetupHelper.EnsureTestDatabaseExists("master", "test3", "MITTest3", scriptPath, true);
+            DBSetupHelper.EnsureTestDatabaseExists("master", "test3", "CETest3", scriptPath, true);
         }
 
         /// <summary>

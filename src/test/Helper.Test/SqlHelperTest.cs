@@ -25,10 +25,10 @@ namespace Codentia.Test.Test.Helper.Test
         public void TestFixtureSetUp()
         {
             string scriptPath = @"Helper.Test\SQL\SetupTestDB.sql";
-            DBSetupHelper.EnsureTestDatabaseExists("master", "test1", "MITTest1", scriptPath, true);    
+            DBSetupHelper.EnsureTestDatabaseExists("master", "test1", "CETest1", scriptPath, true);    
        
             scriptPath = @"Helper.Test\SQL\SetUpTestLookupDB.sql";
-            DBSetupHelper.EnsureTestDatabaseExists("master", "test4", "MITTest4", scriptPath, true);
+            DBSetupHelper.EnsureTestDatabaseExists("master", "test4", "CETest4", scriptPath, true);
         }
 
         /// <summary>
@@ -841,7 +841,7 @@ namespace Codentia.Test.Test.Helper.Test
         public void _066_ClearDataInDatabase_All_WithoutXmlList_NoFK()
         {
             string scriptPath = @"Helper.Test\SQL\SetUpTestDBWithDataAndNoFK.sql";
-            DBSetupHelper.EnsureTestDatabaseExists("master", "testnofk", "MITTestNoFK", scriptPath, true);
+            DBSetupHelper.EnsureTestDatabaseExists("master", "testnofk", "CETestNoFK", scriptPath, true);
 
             Assert.That(DbSystem.DoesUserTableHaveData("testnofk", "TestDataNotParent"), Is.True);
             Assert.That(DbSystem.DoesUserTableHaveData("testnofk", "TestDataNotChild"), Is.True);
@@ -862,7 +862,7 @@ namespace Codentia.Test.Test.Helper.Test
         public void _067_ClearDataInDatabase_All_WithoutXmlList_WithFK()
         {
             string scriptPath = @"Helper.Test\SQL\SetUpTestDBWithDataAndFK.sql";
-            DBSetupHelper.EnsureTestDatabaseExists("master", "testwithfk", "MITTestWithFK", scriptPath, true);
+            DBSetupHelper.EnsureTestDatabaseExists("master", "testwithfk", "CETestWithFK", scriptPath, true);
 
             Assert.That(DbSystem.DoesUserTableHaveData("testwithfk", "TestDataDelete1"), Is.True);
             Assert.That(DbSystem.DoesUserTableHaveData("testwithfk", "TestDataDelete2"), Is.True);
@@ -880,7 +880,7 @@ namespace Codentia.Test.Test.Helper.Test
         public void _068_ClearDataInDatabase_All_WithXmlList_WithFK()
         {
             string scriptPath = @"Helper.Test\SQL\SetUpTestDBWithDataAndFK.sql";
-            DBSetupHelper.EnsureTestDatabaseExists("master", "testwithfk", "MITTestWithFK", scriptPath, true);
+            DBSetupHelper.EnsureTestDatabaseExists("master", "testwithfk", "CETestWithFK", scriptPath, true);
 
             Assert.That(DbSystem.DoesUserTableHaveData("testwithfk", "TestDataDelete1"), Is.True);
             Assert.That(DbSystem.DoesUserTableHaveData("testwithfk", "TestDataDelete2"), Is.True);
@@ -901,7 +901,7 @@ namespace Codentia.Test.Test.Helper.Test
         public void _069_ClearDataInDatabase_All_WithXmlListWithNoDeletes_NoFK()
         {
             string scriptPath = @"Helper.Test\SQL\SetUpTestDBWithDataAndNoFK.sql";
-            DBSetupHelper.EnsureTestDatabaseExists("master", "testnofk", "MITTestNoFK", scriptPath, true);
+            DBSetupHelper.EnsureTestDatabaseExists("master", "testnofk", "CETestNoFK", scriptPath, true);
 
             Assert.That(DbSystem.DoesUserTableHaveData("testnofk", "TestDataNotParent"), Is.True);
             Assert.That(DbSystem.DoesUserTableHaveData("testnofk", "TestDataNotChild"), Is.True);
@@ -922,7 +922,7 @@ namespace Codentia.Test.Test.Helper.Test
         public void _070_ClearDataInDatabase_JustList_WithXmlList_WithFK()
         {
             string scriptPath = @"Helper.Test\SQL\SetUpTestDBWithDataAndFK.sql";
-            DBSetupHelper.EnsureTestDatabaseExists("master", "testwithfk", "MITTestWithFK", scriptPath, true);
+            DBSetupHelper.EnsureTestDatabaseExists("master", "testwithfk", "CETestWithFK", scriptPath, true);
 
             Assert.That(DbSystem.DoesUserTableHaveData("testwithfk", "TestDataDelete1"), Is.True);
             Assert.That(DbSystem.DoesUserTableHaveData("testwithfk", "TestDataDelete2"), Is.True);
@@ -943,7 +943,7 @@ namespace Codentia.Test.Test.Helper.Test
         public void _071_ClearDataInDatabase_JustList_WithXmlListWithNoDeletes_NoFK()
         {
             string scriptPath = @"Helper.Test\SQL\SetUpTestDBWithDataAndNoFK.sql";
-            DBSetupHelper.EnsureTestDatabaseExists("master", "testnofk", "MITTestNoFK", scriptPath, true);
+            DBSetupHelper.EnsureTestDatabaseExists("master", "testnofk", "CETestNoFK", scriptPath, true);
 
             Assert.That(DbSystem.DoesUserTableHaveData("testnofk", "TestDataNotParent"), Is.True);
             Assert.That(DbSystem.DoesUserTableHaveData("testnofk", "TestDataNotChild"), Is.True);
@@ -995,7 +995,7 @@ namespace Codentia.Test.Test.Helper.Test
         public void _073_ReadSystemCheckTable_TableDoesNotExist()
         {
             string scriptPath = @"Helper.Test\SQL\SetupTestDB.sql";
-            DBSetupHelper.EnsureTestDatabaseExists("master", "test1", "MITTest1", scriptPath, true);
+            DBSetupHelper.EnsureTestDatabaseExists("master", "test1", "CETest1", scriptPath, true);
 
             Assert.That(delegate { Dictionary<Guid, DateTime> dict = SqlHelper.ReadSystemCheckTable("test1"); }, Throws.Exception.With.Message.EqualTo("mitsysUnitTestCheck has not been created. CreateSystemCheckTable needs to be called before this method"));
         }
