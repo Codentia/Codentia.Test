@@ -19,7 +19,8 @@ namespace Codentia.Test.Helper
         public static DataTable LoadXLSSheetToDataTable(string localFilePath, string sheetName, bool firstRowAsHeader)
         {
             DataTable returnData = new DataTable();
-            string connString = string.Format("Provider=Microsoft.Jet.Oledb.4.0;Data Source={0};Extended Properties=\"Excel 8.0;HDR={1};IMEX=1;\"", localFilePath.Replace("\\", "\\\\"), firstRowAsHeader ? "YES" : "NO");
+            ////string connString = string.Format("Provider=Microsoft.Jet.Oledb.4.0;Data Source={0};Extended Properties=\"Excel 8.0;HDR={1};IMEX=1;\"", localFilePath.Replace("\\", "\\\\"), firstRowAsHeader ? "YES" : "NO");
+            string connString = string.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=\"Excel 8.0;HDR={1};IMEX=1;\"", localFilePath.Replace("\\", "\\\\"), firstRowAsHeader ? "YES" : "NO");
             OleDbConnection conn = new OleDbConnection(connString);
             conn.Open();
 
