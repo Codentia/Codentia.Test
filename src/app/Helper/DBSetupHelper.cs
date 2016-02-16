@@ -51,7 +51,7 @@ namespace Codentia.Test.Helper
                     string commands = sr.ReadToEnd();
                     sr.Close();
 
-                    string[] delims = { "GO\r\n" };
+                    string[] delims = { "GO\r\n", "GO\n\n" };
                     string[] commandSplit = commands.Split(delims, StringSplitOptions.RemoveEmptyEntries);
                     
                     //// Console.Out.WriteLine(commands);
